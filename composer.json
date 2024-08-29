@@ -1,0 +1,42 @@
+{
+    "name": "magdasaif/settings_module",
+    "description": "this is a Setting package based on hmvc module v10",
+    "type":"library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "magdasaif",
+            "email": "magdasaif3@gmail.com"
+        }
+    ],
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Modules\\Settings\\Providers\\SettingsServiceProvider",
+                "Modules\\Settings\\Providers\\RouteServiceProvider"
+            ],
+            "aliases": {
+
+            }
+        }
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true,
+    "require": {
+        "php": "^8.2",
+        "nwidart/laravel-modules": "*",
+        "spatie/laravel-medialibrary":"^11.7"
+    },
+    "autoload": {
+        "psr-4": {
+            "Modules\\Settings\\": "",
+            "Modules\\Settings\\Database\\Factories\\": "Database/Factories/",
+            "Modules\\Settings\\Database\\Seeders\\": "Database/Seeders/"
+        }
+    },
+    "config": {
+        "allow-plugins": {
+            "wikimedia/composer-merge-plugin": true
+        }
+    }
+}
