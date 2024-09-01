@@ -43,6 +43,6 @@ class Setting extends Model implements HasMedia
     #==============================================================================#
     protected static function newFactory()
     {
-        // return \Modules\Setting\Database\factories\SettingFactory::new();
+        return \Modules\Settings\Database\factories\SettingsFactory::new();
     }
 }

@@ -16,8 +16,8 @@ trait IsSorted
     public function getHighestOrderNumber(): int
     {
         return (int) static::where('model_type', $this->model_type)
-            ->where('model_id', $this->model_id)
-            ->max($this->determineOrderColumnName());
+                        ->where('model_id', $this->model_id)
+                        ->max($this->determineOrderColumnName());
     }
 
     public function scopeOrdered(Builder $query): Builder
@@ -35,9 +35,6 @@ trait IsSorted
     {
         foreach ($ids as $id) {
             $model = static::find($id);
-            if (! $model) {
-                continue;
-            }
 
             $orderColumnName = $model->determineOrderColumnName();
 

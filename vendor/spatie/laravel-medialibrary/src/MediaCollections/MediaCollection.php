@@ -37,12 +37,13 @@ class MediaCollection
     public function __construct(
         public string $name
     ) {
-        $this->mediaConversionRegistrations = function () {};
+        $this->mediaConversionRegistrations = function () {
+        };
 
         $this->acceptsFile = fn () => true;
     }
 
-    public static function create($name): self
+    public static function create($name)
     {
         return new static($name);
     }
@@ -93,7 +94,7 @@ class MediaCollection
         return $this;
     }
 
-    public function registerMediaConversions(callable $mediaConversionRegistrations): void
+    public function registerMediaConversions(callable $mediaConversionRegistrations)
     {
         $this->mediaConversionRegistrations = $mediaConversionRegistrations;
     }

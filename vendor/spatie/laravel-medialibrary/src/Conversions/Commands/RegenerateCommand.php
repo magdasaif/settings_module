@@ -6,7 +6,7 @@ use Exception;
 use Illuminate\Console\Command;
 use Illuminate\Console\ConfirmableTrait;
 use Illuminate\Support\Arr;
-use Illuminate\Support\LazyCollection;
+use Illuminate\Support\Collection;
 use Illuminate\Support\Str;
 use Spatie\MediaLibrary\Conversions\FileManipulator;
 use Spatie\MediaLibrary\MediaCollections\MediaRepository;
@@ -32,7 +32,7 @@ class RegenerateCommand extends Command
 
     protected array $errorMessages = [];
 
-    public function handle(MediaRepository $mediaRepository, FileManipulator $fileManipulator): void
+    public function handle(MediaRepository $mediaRepository, FileManipulator $fileManipulator)
     {
         $this->mediaRepository = $mediaRepository;
 
@@ -45,10 +45,6 @@ class RegenerateCommand extends Command
         $mediaFiles = $this->getMediaToBeRegenerated();
 
         $progressBar = $this->output->createProgressBar($mediaFiles->count());
-
-        if (config('media-library.queue_connection_name') === 'sync') {
-            set_time_limit(0);
-        }
 
         $mediaFiles->each(function (Media $media) use ($progressBar) {
             try {
@@ -80,12 +76,12 @@ class RegenerateCommand extends Command
         $this->info('All done!');
     }
 
-    public function getMediaToBeRegenerated(): LazyCollection
+    public function getMediaToBeRegenerated(): Collection
     {
         // Get this arg first as it can also be passed to the greater-than-id branch
         $modelType = $this->argument('modelType');
 
-        $startingFromId = (int) $this->option('starting-from-id');
+        $startingFromId = (int)$this->option('starting-from-id');
         if ($startingFromId !== 0) {
             $excludeStartingId = (bool) $this->option('exclude-starting-id') ?: false;
 

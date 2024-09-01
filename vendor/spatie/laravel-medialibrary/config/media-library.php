@@ -24,17 +24,12 @@ return [
      * This queue will be used to generate derived and responsive images.
      * Leave empty to use the default queue.
      */
-    'queue_name' => env('MEDIA_QUEUE', ''),
+    'queue_name' => '',
 
     /*
      * By default all conversions will be performed on a queue.
      */
     'queue_conversions_by_default' => env('QUEUE_CONVERSIONS_BY_DEFAULT', true),
-
-    /*
-     * Should database transactions be run after database commits?
-     */
-    'queue_conversions_after_database_commit' => env('QUEUE_CONVERSIONS_AFTER_DB_COMMIT', true),
 
     /*
      * The fully qualified class name of the media model.
@@ -44,7 +39,7 @@ return [
     /*
      * When enabled, media collections will be serialised using the default
      * laravel model serialization behaviour.
-     *
+     * 
      * Keep this option disabled if using Media Library Pro components (https://medialibrary.pro)
      */
     'use_default_collection_serialization' => false,
@@ -203,13 +198,6 @@ return [
      */
     'media_downloader' => Spatie\MediaLibrary\Downloaders\DefaultDownloader::class,
 
-    /*
-     * When using the addMediaFromUrl method the SSL is verified by default.
-     * This is option disables SSL verification when downloading remote media.
-     * Please note that this is a security risk and should only be false in a local environment.
-     */
-    'media_downloader_ssl' => env('MEDIA_DOWNLOADER_SSL', true),
-
     'remote' => [
         /*
          * Any extra headers that should be included when uploading media to
@@ -237,7 +225,6 @@ return [
         /*
          * By default rendering media to a responsive image will add some javascript and a tiny placeholder.
          * This ensures that the browser can already determine the correct layout.
-         * When disabled, no tiny placeholder is generated.
          */
         'use_tiny_placeholders' => true,
 
@@ -271,10 +258,4 @@ return [
      * If you set this to `/my-subdir`, all your media will be stored in a `/my-subdir` directory.
      */
     'prefix' => env('MEDIA_PREFIX', ''),
-
-    /*
-     * When forcing lazy loading, media will be loaded even if you don't eager load media and you have
-     * disabled lazy loading globally in the service provider.
-     */
-    'force_lazy_loading' => env('FORCE_MEDIA_LIBRARY_LAZY_LOADING', true),
 ];

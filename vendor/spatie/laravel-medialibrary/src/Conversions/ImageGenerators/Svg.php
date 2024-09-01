@@ -9,11 +9,11 @@ use Spatie\MediaLibrary\Conversions\Conversion;
 
 class Svg extends ImageGenerator
 {
-    public function convert(string $file, ?Conversion $conversion = null): string
+    public function convert(string $file, Conversion $conversion = null): string
     {
         $imageFile = pathinfo($file, PATHINFO_DIRNAME).'/'.pathinfo($file, PATHINFO_FILENAME).'.jpg';
 
-        $image = new Imagick;
+        $image = new Imagick();
         $image->readImage($file);
         $image->setBackgroundColor(new ImagickPixel('none'));
         $image->setImageFormat('jpg');
@@ -25,7 +25,7 @@ class Svg extends ImageGenerator
 
     public function requirementsAreInstalled(): bool
     {
-        return class_exists(Imagick::class);
+        return class_exists(\Imagick::class);
     }
 
     public function supportedExtensions(): Collection

@@ -51,7 +51,7 @@ class RegisteredResponsiveImages
         return $this->media->responsive_images[$this->generatedFor]['base64svg'] ?? null;
     }
 
-    public function delete(): void
+    public function delete()
     {
         $this->files->each->delete();
 

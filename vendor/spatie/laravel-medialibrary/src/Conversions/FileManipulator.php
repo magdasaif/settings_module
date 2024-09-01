@@ -54,7 +54,7 @@ class FileManipulator
 
         $copiedOriginalFile = app(Filesystem::class)->copyFromMediaLibrary(
             $media,
-            $temporaryDirectory->path(Str::random(32).'.'.$media->extension)
+            $temporaryDirectory->path(Str::random(32) . '.' . $media->extension)
         );
 
         $conversions
@@ -68,7 +68,7 @@ class FileManipulator
                 return $onlyMissing && Storage::disk($media->disk)->exists($relativePath);
             })
             ->each(function (Conversion $conversion) use ($media, $copiedOriginalFile) {
-                (new PerformConversionAction)->execute($conversion, $media, $copiedOriginalFile);
+                (new PerformConversionAction())->execute($conversion, $media, $copiedOriginalFile);
             });
 
         $temporaryDirectory->delete();
@@ -95,9 +95,7 @@ class FileManipulator
             ->onConnection(config('media-library.queue_connection_name'))
             ->onQueue(config('media-library.queue_name'));
 
-        config('media-library.queue_conversions_after_database_commit')
-            ? dispatch($job)->afterCommit()
-            : dispatch($job);
+        dispatch($job);
 
         return $this;
     }
@@ -122,9 +120,7 @@ class FileManipulator
             ->onConnection(config('media-library.queue_connection_name'))
             ->onQueue(config('media-library.queue_name'));
 
-        config('media-library.queue_conversions_after_database_commit')
-            ? dispatch($job)->afterCommit()
-            : dispatch($job);
+        dispatch($job);
 
         return $this;
     }

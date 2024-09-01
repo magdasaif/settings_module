@@ -5,6 +5,7 @@ namespace Modules\Settings\Providers;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Database\Eloquent\Factory;
 use Modules\Settings\Http\Traits\Configuration;
+use Spatie\MediaLibrary\MediaLibraryServiceProvider;
 
 class SettingsServiceProvider extends ServiceProvider
 {
@@ -46,6 +47,7 @@ class SettingsServiceProvider extends ServiceProvider
     public function register()
     {
         $this->app->register(RouteServiceProvider::class);
+        $this->app->register(MediaLibraryServiceProvider::class);
     }
     //===================================================================================
     /**
@@ -54,6 +56,8 @@ class SettingsServiceProvider extends ServiceProvider
     protected function registerCommands(): void{
         $this->commands([
             \Modules\Settings\Console\PublishModuleCommand::class,
+            \Modules\Settings\Console\PublishMediaLibraryMigrationsCommand::class,
+
         ]);
     }
     //===================================================================================

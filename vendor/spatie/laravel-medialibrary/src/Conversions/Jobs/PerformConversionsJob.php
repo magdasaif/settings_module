@@ -13,8 +13,8 @@ use Spatie\MediaLibrary\MediaCollections\Models\Media;
 class PerformConversionsJob implements ShouldQueue
 {
     use InteractsWithQueue;
-    use Queueable;
     use SerializesModels;
+    use Queueable;
 
     public $deleteWhenMissingModels = true;
 
@@ -22,7 +22,8 @@ class PerformConversionsJob implements ShouldQueue
         protected ConversionCollection $conversions,
         protected Media $media,
         protected bool $onlyMissing = false,
-    ) {}
+    ) {
+    }
 
     public function handle(FileManipulator $fileManipulator): bool
     {
