@@ -20,6 +20,7 @@ class SettingsServiceProvider extends ServiceProvider
      */
     public function boot()
     {
+        $this->registerCommands();
         $this->registerTranslations();
         $this->registerConfig();
         $this->registerViews();
