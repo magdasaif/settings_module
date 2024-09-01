@@ -1,5 +1,5 @@
 <?php
-namespace Modules\Settings\Traits;
+namespace Modules\Settings\Http\Traits;
 
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;

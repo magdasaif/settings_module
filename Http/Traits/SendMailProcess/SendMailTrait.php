@@ -1,5 +1,5 @@
 <?php
-namespace Modules\Settings\Traits\SendMailProcess;
+namespace Modules\Settings\Http\Traits\SendMailProcess;
 
 use Modules\Settings\Mail\SendEmailJob;
 

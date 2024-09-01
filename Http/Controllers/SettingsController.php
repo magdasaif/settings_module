@@ -8,9 +8,9 @@ use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\RedirectResponse;
 use Modules\Settings\Entities\Setting;
-use Modules\Settings\Traits\MediaTrait;
-use Modules\Settings\Traits\SettingTrait;
-use Modules\Settings\Traits\SendMailProcess\MailConfigrationTrait;
+use Modules\Settings\Http\Traits\MediaTrait;
+use Modules\Settings\Http\Traits\SettingTrait;
+use Modules\Settings\Http\Traits\SendMailProcess\MailConfigrationTrait;
 
 class SettingsController extends Controller
 {

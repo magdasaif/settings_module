@@ -1,6 +1,6 @@
 <?php
 
-namespace Modules\Settings\Traits;
+namespace Modules\Settings\Http\Traits;
 
 trait HasTranslate
 {

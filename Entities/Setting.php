@@ -3,10 +3,10 @@
 namespace Modules\Settings\Entities;
 
 use Spatie\MediaLibrary\HasMedia;
-use Modules\Settings\Traits\MediaTrait;
 use Illuminate\Database\Eloquent\Model;
-use Modules\Settings\Traits\HasTranslate;
 use Spatie\MediaLibrary\InteractsWithMedia;
+use Modules\Settings\Http\Traits\MediaTrait;
+use Modules\Settings\Http\Traits\HasTranslate;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Spatie\MediaLibrary\MediaCollections\Models\Media;
 
